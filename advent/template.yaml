@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Advent of code 2020
+
+Globals:
+  Function:
+    Timeout: 30
+
+Resources:
+  Day1Function1:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: day1_1/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /day1/1
+            Method: post
+
+  Day1Function2:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: day1_2/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /day1/2
+            Method: post
+
+Outputs:
+  AdventApi:
+    Description: "API Gateway endpoint URL for Advent of Code 2020"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/day1/1"
+  
