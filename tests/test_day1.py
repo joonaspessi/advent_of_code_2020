@@ -4,17 +4,6 @@ import pytest
 
 from day1_1 import app as day1_1
 from day1_2 import app as day1_2
-from day2_1 import app as day2_1
-
-
-def get_event_input(inputFilePath):
-    with open(inputFilePath, 'r') as f:
-        input_data = f.read()
-    return {
-        "body": {
-            "input": input_data
-        }
-    }
 
 
 @pytest.fixture()
@@ -44,12 +33,3 @@ def test_day1_2(apigw_event, mocker):
     assert ret["statusCode"] == 200
     assert data["result"] == 42275090
     assert data["entries"] == [715, 47, 1258]
-
-
-def test_day2_1(apigw_event, mocker):
-    event = get_event_input("day2_1/input.txt")
-    ret = day2_1.lambda_handler(event, "")
-    data = json.loads(ret["body"])
-
-    assert ret["statusCode"] == 200
-    assert data["result"] == 0

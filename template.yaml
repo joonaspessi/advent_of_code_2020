@@ -34,6 +34,31 @@ Resources:
             Path: /day1/2
             Method: post
 
+  Day2Function1:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: day2_1/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /day2/1
+            Method: post
+
+  Day2Function2:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: day2_2/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /day2/2
+            Method: post
 Outputs:
   AdventApi:
     Description: "API Gateway endpoint URL for Advent of Code 2020"
