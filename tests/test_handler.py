@@ -47,7 +47,7 @@ def test_day1_2(apigw_event, mocker):
 
 
 def test_day2_1(apigw_event, mocker):
-    event = get_event_input("advent/day2_1/input.txt")
+    event = get_event_input("day2_1/input.txt")
     ret = day2_1.lambda_handler(event, "")
     data = json.loads(ret["body"])
 
