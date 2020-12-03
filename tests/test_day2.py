@@ -2,8 +2,7 @@ import json
 
 import pytest
 
-from day2_1 import app as day2_1
-from day2_2 import app as day2_2
+from day2 import app as day2
 
 
 def get_event_input(inputFilePath):
@@ -19,8 +18,8 @@ def get_event_input(inputFilePath):
 
 
 def test_day2_1(mocker):
-    event = get_event_input("day2_1/input.txt")
-    ret = day2_1.lambda_handler(event, "")
+    event = get_event_input("day2/input.txt")
+    ret = day2.lambda_handler(event, "")
     data = json.loads(ret["body"])
 
     assert ret["statusCode"] == 200
@@ -28,8 +27,8 @@ def test_day2_1(mocker):
 
 
 def test_day2_2(mocker):
-    event = get_event_input("day2_2/input.txt")
-    ret = day2_2.lambda_handler(event, "")
+    event = get_event_input("day2/input.txt")
+    ret = day2.lambda_handler_2(event, "")
     data = json.loads(ret["body"])
 
     assert ret["statusCode"] == 200

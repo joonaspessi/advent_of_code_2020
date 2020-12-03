@@ -2,8 +2,7 @@ import json
 
 import pytest
 
-from day1_1 import app as day1_1
-from day1_2 import app as day1_2
+from day1 import app as day1
 
 
 @pytest.fixture()
@@ -17,7 +16,7 @@ def apigw_event():
 
 def test_day1_1(apigw_event, mocker):
 
-    ret = day1_1.lambda_handler(apigw_event, "")
+    ret = day1.lambda_handler(apigw_event, "")
     data = json.loads(ret["body"])
 
     assert ret["statusCode"] == 200
@@ -27,7 +26,7 @@ def test_day1_1(apigw_event, mocker):
 
 def test_day1_2(apigw_event, mocker):
 
-    ret = day1_2.lambda_handler(apigw_event, "")
+    ret = day1.lambda_handler_2(apigw_event, "")
     data = json.loads(ret["body"])
 
     assert ret["statusCode"] == 200
