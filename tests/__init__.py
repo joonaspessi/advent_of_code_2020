@@ -8,6 +8,7 @@ def get_event_input(inputFilePath):
         for line in input_data.splitlines():
             lines.append(line)
 
+    print({"input": lines})
     return {
         "body": json.dumps({"input": lines})
     }
