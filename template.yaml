@@ -11,7 +11,7 @@ Resources:
   Day1Function1:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: day1_1/
+      CodeUri: day1/
       Handler: app.lambda_handler
       Runtime: python3.8
       Events:
@@ -24,8 +24,8 @@ Resources:
   Day1Function2:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: day1_2/
-      Handler: app.lambda_handler
+      CodeUri: day1/
+      Handler: app.lambda_handler_2
       Runtime: python3.8
       Events:
         HelloWorld:
@@ -37,7 +37,7 @@ Resources:
   Day2Function1:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: day2_1/
+      CodeUri: day2/
       Handler: app.lambda_handler
       Runtime: python3.8
       Events:
@@ -50,14 +50,40 @@ Resources:
   Day2Function2:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: day2_2/
-      Handler: app.lambda_handler
+      CodeUri: day2/
+      Handler: app.lambda_handler_2
       Runtime: python3.8
       Events:
         HelloWorld:
           Type: Api
           Properties:
             Path: /day2/2
+            Method: post
+
+  Day3Function1:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: day3/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /day3/1
+            Method: post
+
+  Day3Function2:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: day3/
+      Handler: app.lambda_handler_2
+      Runtime: python3.8
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /day3/2
             Method: post
 Outputs:
   AdventApi:
