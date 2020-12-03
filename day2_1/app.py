@@ -6,10 +6,11 @@ def lambda_handler(event, context):
     """Advent of code day 2, excercise 1
     """
 
-    input = event["body"]["input"]
+    body = event["body"]
+    input = json.loads(body)["input"]
 
     count = 0
-    for line in input.splitlines():
+    for line in input:
         print(line)
         password = tokenize_line(line)
         if is_valid_password(password):
