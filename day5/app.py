@@ -3,9 +3,13 @@ import math
 
 
 def get_input(event):
-    with open("day5/input.txt", 'r') as f:
-        lines = f.readlines()
-        lines = map(lambda n: n.rstrip(), lines)
+    if "body" in event:
+        lines = event["body"].splitlines()
+    else:
+        with open("day5/input.txt", 'r') as f:
+            lines = f.readlines()
+
+    lines = map(lambda n: n.rstrip(), lines)
     return lines
 
 

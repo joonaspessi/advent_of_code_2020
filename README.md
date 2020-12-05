@@ -49,3 +49,20 @@ curl -X POST \
 -d '{"input": ["..##.......", "#...#...#..", ".#....#..#.", "..#.#...#.#", ".#...##..#.", "..#.##.....", ".#.#.#....#", ".#........#", "#.##...#...", "#...##....#", ".#..#...#.#"]}' \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day3/2
 ```
+
+### Day 5
+
+This excercise contained binary tree implementation in which I used recursive algorithm.
+Second part was quite trivial two array comparison.
+
+
+```
+curl -X POST \
+--data-binary '@day5/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day5/1
+
+curl -X POST \                                                                                                      <aws:joonaspessi_dev_user>
+--data-binary '@day5/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day5/2
+```
+

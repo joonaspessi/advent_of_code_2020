@@ -3,7 +3,7 @@ import json
 import pytest
 
 from day5 import app as day5
-from tests import get_event_input
+from tests import get_event_input_raw
 
 
 def test_get_row():
@@ -19,12 +19,14 @@ def test_get_column():
 
 
 def test_day5_1():
-    ret = day5.lambda_handler({}, {})
+    event = get_event_input_raw("day5/input.txt")
+    ret = day5.lambda_handler(event, {})
     data = json.loads(ret["body"])
     assert data.get("result") == 806
 
 
 def test_day5_2():
-    ret = day5.lambda_handler_2({}, {})
+    event = get_event_input_raw("day5/input.txt")
+    ret = day5.lambda_handler_2(event, {})
     data = json.loads(ret["body"])
     assert data.get("result") == 562
