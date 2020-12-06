@@ -55,14 +55,26 @@ https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day3/2
 This excercise contained binary tree implementation in which I used recursive algorithm.
 Second part was quite trivial two array comparison.
 
-
 ```
 curl -X POST \
 --data-binary '@day5/input.txt' \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day5/1
 
-curl -X POST \                                                                                                      <aws:joonaspessi_dev_user>
+curl -X POST \
 --data-binary '@day5/input.txt' \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day5/2
 ```
 
+### Day 6
+
+Simple set operations including intersection
+
+```
+curl -X POST \
+--data-binary '@day6/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day6/1
+
+curl -X POST \
+--data-binary '@day6/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day6/2
+```

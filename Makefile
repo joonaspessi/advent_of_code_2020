@@ -1,3 +1,5 @@
+.PHONY: all venv run clean build
+
 VENV := .venv
 
 all: venv
@@ -15,4 +17,8 @@ clean:
 	rm -rf $(VENV)
 	find . -type f -name '*.pyc' -delete
 
-.PHONY: all venv run clean
+build: 
+	sam build --cached
+
+deploy: build
+	sam deploy
