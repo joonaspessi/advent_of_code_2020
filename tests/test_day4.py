@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from tests import get_event_input
+from tests import get_event_input_raw
 
 from day4 import app as day4
 
@@ -56,7 +56,8 @@ def test_hcl_validation():
 
 
 def test_day4_1_given_input(mocker):
-    ret = day4.lambda_handler({}, "")
+    event = get_event_input_raw("day4/input.txt")
+    ret = day4.lambda_handler(event, "")
     data = json.loads(ret["body"])
 
     assert ret["statusCode"] == 200
@@ -64,7 +65,8 @@ def test_day4_1_given_input(mocker):
 
 
 def test_day3_2_given_input(mocker):
-    ret = day4.lambda_handler_2({}, "")
+    event = get_event_input_raw("day4/input.txt")
+    ret = day4.lambda_handler_2(event, "")
     data = json.loads(ret["body"])
 
     assert ret["statusCode"] == 200

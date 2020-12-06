@@ -50,6 +50,20 @@ curl -X POST \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day3/2
 ```
 
+### Day 4
+
+Testing mostly input validation. Regex skills very useful
+
+```
+curl -X POST \
+--data-binary '@day4/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day4/1
+
+curl -X POST \
+--data-binary '@day4/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day4/2
+```
+
 ### Day 5
 
 This excercise contained binary tree implementation in which I used recursive algorithm.

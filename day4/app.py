@@ -2,21 +2,29 @@ import json
 import re
 
 
-def get_passport_list(inputFilePath):
-    with open(inputFilePath, 'r') as f:
-        passports = []
-        passport = {}
-        for line in f:
-            line = line.rstrip()
-            if line == "":
-                passports.append(passport)
-                passport = {}
-            else:
-                attributes = line.split(" ")
-                for attribute in attributes:
-                    line_split = attribute.split(":")
-                    passport[line_split[0]] = line_split[1]
-        passports.append(passport)
+def get_input(event, backup_file_name):
+    if "body" in event:
+        lines = event["body"].splitlines()
+    else:
+        with open(backup_file_name, 'r') as f:
+            lines = f.readlines()
+    return lines
+
+
+def get_passport_list(input_lines):
+    passports = []
+    passport = {}
+    for line in input_lines:
+        line = line.rstrip()
+        if line == "":
+            passports.append(passport)
+            passport = {}
+        else:
+            attributes = line.split(" ")
+            for attribute in attributes:
+                line_split = attribute.split(":")
+                passport[line_split[0]] = line_split[1]
+    passports.append(passport)
 
     return passports
 
@@ -109,7 +117,8 @@ def is_valid_passport_strict(passport):
 def lambda_handler(event, context):
     """Advent of code day 4, excercise 1
     """
-    passports = get_passport_list("day4/input.txt")
+    input_lines = get_input(event, "day4/input.txt")
+    passports = get_passport_list(input_lines)
 
     valid_passports = 0
     for passport in passports:
@@ -128,7 +137,8 @@ def lambda_handler(event, context):
 def lambda_handler_2(event, context):
     """Advent of code day 4, excercise 2
     """
-    passports = get_passport_list("day4/input.txt")
+    input_lines = get_input(event, "day4/input.txt")
+    passports = get_passport_list(input_lines)
 
     valid_passports = 0
     for passport in passports:
