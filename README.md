@@ -7,8 +7,27 @@ Deployment is done using AWS SAM.
 Answer to each excercise can be POSTED to API endpoint that follows pattern
 
 ```
-https://<api_base_url>/day<x>/<y>, where x is day number ranging 1-25 and y is excercise number ranging 1-2
+curl -X POST \
+--data-binary "@day${day_number}/input.txt" \
+"https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day${day_number}/${excercise_number}"
+
 ```
+
+Where ${day_number} is number of day ranging 1-25 and ${excercise_number} is excercise number ranging 1-2
+
+## Development environment
+
+TODO
+
+- How to create venv
+- How to run unit tests
+
+## Deployment
+
+TODO
+
+- How to build sam
+- How to deploy sam
 
 ## Day 1
 
