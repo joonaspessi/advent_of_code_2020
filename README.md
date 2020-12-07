@@ -92,3 +92,17 @@ curl -X POST \
 --data-binary '@day6/input.txt' \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day6/2
 ```
+
+### Day 7: Handy Haversacks
+
+Again interesting recursive implementation finding
+
+```
+curl -X POST \
+--data-binary '@day7/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day7/1
+
+curl -X POST \
+--data-binary '@day7/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day7/2
+```
