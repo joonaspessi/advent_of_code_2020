@@ -53,6 +53,8 @@ def get_group_declarations_2(input_lines):
 
 
 def lambda_handler(event, _context):
+    """Advent of code day 6, excercise 1
+    """
     input_lines = get_input(event)
     declarations = get_group_declarations(input_lines)
 
@@ -69,6 +71,8 @@ def lambda_handler(event, _context):
 
 
 def lambda_handler_2(event, _context):
+    """Advent of code day 6, excercise 2
+    """
     input_lines = get_input(event)
     declarations = get_group_declarations_2(input_lines)
 

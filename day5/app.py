@@ -48,6 +48,8 @@ def get_seat_id(row_id, column_id, magic_multiplier=8):
 
 
 def lambda_handler(event, _context):
+    """Advent of code day 5, excercise 1
+    """
     boarding_passes = get_input(event)
 
     highest_seat_id = 0
@@ -67,6 +69,8 @@ def lambda_handler(event, _context):
 
 
 def lambda_handler_2(event, _context):
+    """Advent of code day 5, excercise 2
+    """
     boarding_passes = get_input(event)
 
     seat_ids = []

@@ -68,6 +68,8 @@ def required_bags(bag, bags, amount):
 
 
 def lambda_handler(event, _context):
+    """Advent of code day 7, excercise 1
+    """
     input_lines = get_input(event)
     bags = parse_input(input_lines)
 
@@ -88,6 +90,8 @@ def lambda_handler(event, _context):
 
 
 def lambda_handler_2(event, _context):
+    """Advent of code day 7, excercise 2
+    """
     input_lines = get_input(event)
     bags = parse_input(input_lines)
     bags_required = required_bags("shiny gold", bags, 0)
