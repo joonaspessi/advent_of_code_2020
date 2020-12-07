@@ -22,3 +22,6 @@ build:
 
 deploy: build
 	sam deploy
+
+test:
+	python -m pytest tests
