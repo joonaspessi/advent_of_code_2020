@@ -16,12 +16,12 @@ Excercise testing skills to combine for loops. (Probably functional programmers 
 
 ```
 curl -X POST \
--d '{"report": [1721, 979, 366, 299, 675, 1456]}' \
-https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/Prod/day1/1
+--data-binary '@day1/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day1/1
 
 curl -X POST \
--d '{"report": [1721, 979, 366, 299, 675, 1456]}' \
-https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/Prod/day1/2
+--data-binary '@day1/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day1/2
 ```
 
 ### Day 2
