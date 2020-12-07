@@ -2,7 +2,9 @@
 
 [adventofcode.com](https://adventofcode.com/) implementation in Python 3 with Serverless twist.
 All challenges are implemented as AWS Lambdas and published via AWS API Gateway.
-Answer to each excercise can POSTED to API endpoint that follows pattern
+Deployment is done using AWS SAM.
+
+Answer to each excercise can be POSTED to API endpoint that follows pattern
 
 ```
 https://<api_base_url>/day<x>/<y>, where x is day number ranging 1-25 and y is excercise number ranging 1-2
