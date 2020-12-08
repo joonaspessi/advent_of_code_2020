@@ -69,11 +69,11 @@ Excercise testing string parsing. Was easy to implement with regular expression.
 
 ```
 curl -X POST \
--d '{"input": ["1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"]}' \
-https://xxxxxxxxxx.execute-api.eu-west-1.amazonaws.com/Prod/day2/1
+--data-binary '@day2/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day2/1
 
 curl -X POST \
--d '{"input": ["1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"]}' \
+--data-binary '@day2/input.txt' \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day2/2
 ```
 

@@ -4,6 +4,8 @@ import pytest
 
 from day2 import app as day2
 
+from tests import get_event_input_raw
+
 
 def get_event_input(inputFilePath):
     with open(inputFilePath, 'r') as f:
@@ -18,7 +20,7 @@ def get_event_input(inputFilePath):
 
 
 def test_day2_1(mocker):
-    event = get_event_input("day2/input.txt")
+    event = get_event_input_raw("day2/input.txt")
     ret = day2.lambda_handler(event, "")
     data = json.loads(ret["body"])
 
@@ -27,7 +29,7 @@ def test_day2_1(mocker):
 
 
 def test_day2_2(mocker):
-    event = get_event_input("day2/input.txt")
+    event = get_event_input_raw("day2/input.txt")
     ret = day2.lambda_handler_2(event, "")
     data = json.loads(ret["body"])
 

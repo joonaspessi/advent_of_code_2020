@@ -2,6 +2,15 @@ import json
 import re
 
 
+def get_input(event, backup_file_name):
+    if "body" in event:
+        lines = event["body"].splitlines()
+    else:
+        with open(backup_file_name, 'r') as f:
+            lines = f.readlines()
+    return lines
+
+
 def tokenize_line(line):
     pattern = r'(\d+)-(\d+) (\w): (\w+)'
     return {
@@ -37,8 +46,7 @@ def lambda_handler(event, context):
     """Advent of code day 2, excercise 1
     """
 
-    body = event["body"]
-    input = json.loads(body)["input"]
+    input = get_input(event, "day1/input.txt")
 
     count = 0
     for line in input:
@@ -59,8 +67,7 @@ def lambda_handler_2(event, context):
     """Advent of code day 2, excercise 2
     """
 
-    body = event["body"]
-    input = json.loads(body)["input"]
+    input = get_input(event, "day1/input.txt")
 
     count = 0
     for line in input:
