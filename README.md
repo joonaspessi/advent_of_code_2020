@@ -17,17 +17,37 @@ Where ${day_number} is number of day ranging 1-25 and ${excercise_number} is exc
 
 ## Development environment
 
-TODO
+Ensure that you have Python 3.8 installed and available in your environment.
 
-- How to create venv
-- How to run unit tests
+Install and activate virtualenv
 
-## Deployment
+```
+make venv
+. .venv/bin/activate
+```
 
-TODO
+and then run unit tests
 
-- How to build sam
-- How to deploy sam
+```
+make test
+```
+
+## Build and deploy API to AWS
+
+For deployment, ensure that you have aws-sam-cli installed. For further
+installation, please refer to official [instruction](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html).
+
+First build the project and then deploy with guided deployment
+
+```
+sam build && sam deploy --guided
+```
+
+After first guided deployment, you can use make shorthand
+
+```
+make deploy
+```
 
 ## Day 1
 
@@ -126,4 +146,18 @@ https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day7/1
 curl -X POST \
 --data-binary '@day7/input.txt' \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day7/2
+```
+
+### Day 8: Handheld Halting
+
+Nice and simple assembler language runtime implementation.
+
+```
+curl -X POST \
+--data-binary '@day8/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day8/1
+
+curl -X POST \
+--data-binary '@day8/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day8/2
 ```
