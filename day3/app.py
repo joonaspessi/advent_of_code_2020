@@ -3,6 +3,15 @@ import re
 from dataclasses import dataclass
 
 
+def get_input(event):
+    if "body" in event:
+        lines = event["body"].splitlines()
+    else:
+        with open("day3/input.txt", 'r') as f:
+            lines = f.readlines()
+    return lines
+
+
 @dataclass
 class Position:
     x: int
@@ -37,12 +46,6 @@ def get_position_element(position: Position, puzzle):
     }
 
 
-def parse_event_to_puzzle(event):
-    body = event["body"]
-    puzzle = json.loads(body)["input"]
-    return puzzle
-
-
 def do_slope_puzzle(puzzle, delta_x, delta_y):
     line_length_x = len(puzzle[0])
     line_length_y = len(puzzle)
@@ -67,7 +70,7 @@ def do_slope_puzzle(puzzle, delta_x, delta_y):
 def lambda_handler(event, context):
     """Advent of code day 3, excercise 1
     """
-    puzzle = parse_event_to_puzzle(event)
+    puzzle = get_input(event)
     tree_count = do_slope_puzzle(puzzle, 3, 1)
 
     return {
@@ -81,7 +84,7 @@ def lambda_handler(event, context):
 def lambda_handler_2(event, context):
     """Advent of code day 3, excercise 2
     """
-    puzzle = parse_event_to_puzzle(event)
+    puzzle = get_input(event)
     slopes = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
     tree_counts = map(lambda n: do_slope_puzzle(
         puzzle, delta_x=n[0], delta_y=n[1]), slopes)

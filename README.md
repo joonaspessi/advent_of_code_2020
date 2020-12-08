@@ -83,11 +83,11 @@ Excercise testing array indexing and modulo calculation
 
 ```
 curl -X POST \
--d '{"input": ["..##.......", "#...#...#..", ".#....#..#.", "..#.#...#.#", ".#...##..#.", "..#.##.....", ".#.#.#....#", ".#........#", "#.##...#...", "#...##....#", ".#..#...#.#"]}' \
+--data-binary '@day3/input.txt' \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day3/1
 
 curl -X POST \
--d '{"input": ["..##.......", "#...#...#..", ".#....#..#.", "..#.#...#.#", ".#...##..#.", "..#.##.....", ".#.#.#....#", ".#........#", "#.##...#...", "#...##....#", ".#..#...#.#"]}' \
+--data-binary '@day3/input.txt' \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day3/2
 ```
 
