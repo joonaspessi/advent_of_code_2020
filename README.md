@@ -63,7 +63,7 @@ curl -X POST \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day1/2
 ```
 
-### Day 2: Password Philosophy
+## Day 2: Password Philosophy
 
 Excercise testing string parsing. Was easy to implement with regular expression.
 
@@ -77,7 +77,7 @@ curl -X POST \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day2/2
 ```
 
-### Day 3: Toboggan Trajectory
+## Day 3: Toboggan Trajectory
 
 Excercise testing array indexing and modulo calculation
 
@@ -91,7 +91,7 @@ curl -X POST \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day3/2
 ```
 
-### Day 4: Passport Processing
+## Day 4: Passport Processing
 
 Testing mostly input validation. Regex skills very useful
 
@@ -105,7 +105,7 @@ curl -X POST \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day4/2
 ```
 
-### Day 5: Binary Boarding
+## Day 5: Binary Boarding
 
 This excercise contained binary tree implementation in which I used recursive algorithm.
 Second part was quite trivial two array comparison.
@@ -120,7 +120,7 @@ curl -X POST \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day5/2
 ```
 
-### Day 6: Custom Customs
+## Day 6: Custom Customs
 
 Simple set operations including intersection
 
@@ -134,7 +134,7 @@ curl -X POST \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day6/2
 ```
 
-### Day 7: Handy Haversacks
+## Day 7: Handy Haversacks
 
 Again interesting recursive implementation finding
 
@@ -148,7 +148,7 @@ curl -X POST \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day7/2
 ```
 
-### Day 8: Handheld Halting
+## Day 8: Handheld Halting
 
 Nice and simple assembler language runtime implementation.
 
