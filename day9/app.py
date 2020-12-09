@@ -28,6 +28,13 @@ def is_ok_number(preamble_size, index, numbers):
     return is_allowed
 
 
+def get_list_sum(numbers: int) -> int:
+    sum = 0
+    for number in numbers:
+        sum += number
+    return sum
+
+
 def lambda_handler(event, _):
     """Advent of code day 9, excercise 1
     """
@@ -45,13 +52,6 @@ def lambda_handler(event, _):
             "result": failed_number
         }),
     }
-
-
-def get_list_sum(numbers: int) -> int:
-    sum = 0
-    for number in numbers:
-        sum += number
-    return sum
 
 
 def lambda_handler_2(event, _):

@@ -161,3 +161,23 @@ curl -X POST \
 --data-binary '@day8/input.txt' \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day8/2
 ```
+
+## Day 9: Encoding Error
+
+First excercise was straight forward. Simple array indexing.
+In second excercise, I first understood the assignment wrong and made program that
+tried to match four number sums. After actually READING the assignment properly,
+the implementation was quite simple.
+
+I still use enumerate-function for creating for loop with index. Still not sure that is
+this the most Pythonic way of doing this...
+
+```
+curl -X POST \
+--data-binary '@day9/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day9/1
+
+curl -X POST \
+--data-binary '@day9/input.txt' \
+https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day9/2
+```
