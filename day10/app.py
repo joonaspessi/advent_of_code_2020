@@ -7,7 +7,7 @@ def get_input(event):
     if "body" in event:
         lines = event["body"].splitlines()
     else:
-        with open("day5/input.txt", 'r') as f:
+        with open("day10/input.txt", 'r') as f:
             lines = f.readlines()
 
     adapters = [int(line) for line in lines]
@@ -61,7 +61,6 @@ def lambda_handler_2(event, _):
         if node not in graph.keys():
             return 1
         return sum(dfs(nnode) for nnode in graph[node])
-
     result = dfs(0)
 
     return {

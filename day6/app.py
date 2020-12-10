@@ -6,7 +6,7 @@ def get_input(event):
     if "body" in event:
         lines = event["body"].splitlines()
     else:
-        with open("day5/input.txt", 'r') as f:
+        with open("day6/input.txt", 'r') as f:
             lines = f.readlines()
     return lines
 
