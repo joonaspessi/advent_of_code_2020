@@ -16,6 +16,10 @@ def get_input(event):
 
 
 def make_graph(adapters):
+    """ Directed graph where nodes represent adapters. Adapter node points to next
+        possible adapters. Valid adapter configurations can be determined by following
+        the graph starting from node 0
+    """
     graph = {}
     adapters = [0] + adapters
     for index, adapter in enumerate(adapters):
@@ -45,6 +49,7 @@ def lambda_handler_2(event, _):
     """Advent of code day 10, excercise 2
     """
     adapters = get_input(event)
+
     graph = make_graph(adapters)
 
     @lru_cache(None)
