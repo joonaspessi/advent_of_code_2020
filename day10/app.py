@@ -48,11 +48,11 @@ def lambda_handler_2(event, _):
     graph = make_graph(adapters)
 
     @lru_cache(None)
-    def dfs(node):
-        if node not in graph.keys():
+    def depth_first_search(adapter):
+        if adapter not in graph.keys():
             return 1
-        return sum(dfs(nnode) for nnode in graph[node])
-    result = dfs(0)
+        return sum(depth_first_search(next_adapter) for next_adapter in graph[adapter])
+    result = depth_first_search(0)
 
     return {
         "statusCode": 200,
