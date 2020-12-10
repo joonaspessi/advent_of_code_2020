@@ -52,6 +52,7 @@ def lambda_handler_2(event, _):
         if adapter not in graph.keys():
             return 1
         return sum(depth_first_search(next_adapter) for next_adapter in graph[adapter])
+
     result = depth_first_search(0)
 
     return {
