@@ -30,17 +30,8 @@ def lambda_handler(event, _):
     """
     adapters = get_input(event)
     adapters = [0] + adapters + [max(adapters) + 3]
-
-    diff_1 = 0
-    diff_3 = 0
-    for index, adapter in enumerate(adapters):
-        if index + 1 == len(adapters):
-            break
-        if adapters[index + 1] - adapter == 1:
-            diff_1 += 1
-        if adapters[index + 1] - adapter == 3:
-            diff_3 += 1
-    result = diff_1 * diff_3
+    diffs = [next - prev for prev, next in zip(adapters[:-1], adapters[1:])]
+    result = diffs.count(1) * diffs.count(3)
 
     return {
         "statusCode": 200,
