@@ -25,6 +25,9 @@ def invert_modulo(a, m):
 
 
 def gcd(x, y):
+    """ Greates commond divisor
+        >>>> For example, the gcd of 8 and 12 is 4, gcd(8,12) == 1
+    """
     if x == 0:
         return y
     return gcd(y % x, x)
