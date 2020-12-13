@@ -11,17 +11,8 @@ def get_input(event):
     return [line for line in lines]
 
 
-def mod_pow(b, e, mod):
-    if e == 0:
-        return 1
-    elif e % 2 == 0:
-        return mod_pow((b*b) % mod, e/2, mod)
-    else:
-        return (b*mod_pow(b, e-1, mod)) % mod
-
-
 def invert_modulo(a, m):
-    return mod_pow(a, m-2, m)
+    return pow(a, m-2, m)
 
 
 def gcd(x, y):
