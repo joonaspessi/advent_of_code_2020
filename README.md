@@ -190,10 +190,10 @@ array loop with right condition.
 However, I didn't manage to get the second excercise done. I was missing memoization and
 calculation would have taken too long. After doing some research, I ended up in a solution
 where I builded graph for all the possible solutions. Basically the directed graph model contains
-every adapter and its connected to next legal adapters  which jolt is in the range of additonal 1-3 jolts.
+every adapter and its connected to next legal adapters which jolt is in the range of additonal 1-3 jolts.
 
-Then by walking through all the permutations of this graph with using depth first search (DFS) algorithm 
-and memoization to store already calculated results gave me the right answer. 
+Then by walking through all the permutations of this graph with using depth first search (DFS) algorithm
+and memoization to store already calculated results gave me the right answer.
 
 This was really good excercise to learn graph data modeling, DFS-algorithm and memoization
 
@@ -206,3 +206,8 @@ curl -X POST \
 --data-binary '@day10/input.txt' \
 https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day10/2
 ```
+
+## Day 13: Shuttle Search
+
+Second excercise contained problem that could be solved with [Chinese remainder
+theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Computation)
