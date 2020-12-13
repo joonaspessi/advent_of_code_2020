@@ -68,6 +68,9 @@ def lambda_handler_2(event, _):
                  (index, line) for index, line in enumerate(input[1].split(","))]))
     lines = list(map(lambda n: (n[0], int(n[1])), lines))
 
+    # Implementation of Chinese remainder theorem
+    # https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Existence_(direct_construction
+
     # (T + i) % line == 0
     # ==> (line - i) % line
     constrains = []
@@ -81,16 +84,10 @@ def lambda_handler_2(event, _):
     ans = 0
     for i, l in constrains:
         ni = int(N/l)
-        assert gcd(ni, l) == 1
         mi = int(invert_modulo(ni, l))
-        assert (mi * ni) % l == 1
-        assert (i * mi * ni) % l == i
-        res = i * mi * ni
-        assert res % l == i
-        assert res % ni == 0
-        ans += res
-
+        ans += i * mi * ni
     result = ans % N
+
     return {
         "statusCode": 200,
         "body": json.dumps({
