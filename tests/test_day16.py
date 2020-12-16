@@ -20,15 +20,8 @@ def test_day16_1():
     assert data.get("result") == 26053
 
 
-def test_day16_2_test():
-    event = get_event_input_raw("day16/input_test2.txt")
-    ret = day16.lambda_handler_2(event, {})
-    data = json.loads(ret["body"])
-    assert data.get("result") == 2578
-
-
 def test_day16_2():
     event = get_event_input_raw("day16/input.txt")
     ret = day16.lambda_handler_2(event, {})
     data = json.loads(ret["body"])
-    assert data.get("result") == 11721679
+    assert data.get("result") == 1515506256421
