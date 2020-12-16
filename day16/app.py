@@ -13,17 +13,15 @@ def get_input(event):
 
 def lambda_handler(event, _):
     input = get_input(event)
-    cons, _, nt = input.split("\n\n")
-    reg = r"^(.+)\: (\d+)-(\d+) or (\d+)-(\d+)$"
-    constrains = []
-    for c in cons.splitlines():
-        c = c.rstrip()
-        res = re.search(reg, c)
-        constrains.append(range(int(res[2]), int(res[3])+1))
-        constrains.append(range(int(res[4]), int(res[5])+1))
+    tickets, _, nt = input.split("\n\n")
+
+    tickets = re.findall(r"\d+", tickets)
+    constrains = [range(int(tickets[i]), int(tickets[i+1])+1)
+                  for i in range(0, len(tickets), 2)]
 
     invalid_values = []
-    for n in [(int(n)) for n in nt[nt.index(":") + 2:].replace("\n", ",").split(",")]:
+    tickets = [(int(n)) for n in re.findall(r"\d+", nt)]
+    for n in tickets:
         con_ok = False
         for c in constrains:
             if n in c:
