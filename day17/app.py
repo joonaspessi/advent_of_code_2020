@@ -33,21 +33,26 @@ def lambda_handler(event, _):
     for round in range(6):
         for y in range(y_len):
             for x in range(x_len):
+                
+
+        for y in range(y_len):
+            for x in range(x_len):
                 matrix[y][x].append(".")
 
         z_len = len(matrix[0][0][0])
 
         activate = []
-        for y, _ in range(y_len):
-            for x, _ in range(x_len):
-                for z, _ in range(z_len):
+        for y in range(y_len):
+            for x in range(x_len):
+                for z in range(z_len):
                     active_cubes = 0
                     for yy in [-1, 0, 1]:
                         for xx in [-1, 0, 1]:
                             for zz in [-1, 0, 1]:
                                 if xx != 0 and yy != 0 and zz != 0:
-                                    if matrix[y+yy][x+xx][z+zz] == "#":
-                                        active_cubes += 1
+                                    if 0 >= y + yy <= y_len and 0 >= xx + x <= x_len and 0 >= zz + z <= z_len:
+                                        if matrix[y+yy][x+xx][z+zz] == "#":
+                                            active_cubes += 1
                     if not(2 <= active_cubes <= 3) and matrix[y][x][z] == "#":
                         activate.append([y, x, z, "."])
                     elif matrix[y][x][z] == "." and active_cubes == 3:
