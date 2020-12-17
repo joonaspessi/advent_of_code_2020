@@ -10,6 +10,10 @@ def get_input(event):
     return lines
 
 
+def get_range(index, matrix):
+    return range(min([cube[index]for cube in matrix]) - 1, max([cube[index]for cube in matrix]) + 2)
+
+
 def lambda_handler(event, _):
     input = get_input(event)
     lines = input.splitlines()
@@ -21,12 +25,11 @@ def lambda_handler(event, _):
             if char == "#":
                 matrix.add((y, x, 0))
 
-    max_range = 15  # len(lines) + 6 + 1
     for _ in range(6):
         new_matrix = set()
-        for y in range(-max_range, max_range):
-            for x in range(-max_range, max_range):
-                for z in range(-max_range, max_range):
+        for y in get_range(0, matrix):
+            for x in get_range(1, matrix):
+                for z in get_range(2, matrix):
                     cube_on = 0
                     for dy in [-1, 0, 1]:
                         for dx in [-1, 0, 1]:
@@ -60,13 +63,12 @@ def lambda_handler_2(event, _):
             if char == "#":
                 matrix.add((y, x, 0, 0))
 
-    max_range = len(lines) + 6 + 1
     for _ in range(6):
         new_matrix = set()
-        for y in range(-max_range, max_range):
-            for x in range(-max_range, max_range):
-                for z in range(-max_range, max_range):
-                    for w in range(-max_range, max_range):
+        for y in get_range(0, matrix):
+            for x in get_range(1, matrix):
+                for z in get_range(2, matrix):
+                    for w in get_range(3, matrix):
                         cube_on = 0
                         for dy in [-1, 0, 1]:
                             for dx in [-1, 0, 1]:
