@@ -211,3 +211,9 @@ https://8f0dqkl1q6.execute-api.eu-west-1.amazonaws.com/Prod/day10/2
 
 Second excercise contained problem that could be solved with [Chinese remainder
 theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Computation)
+
+## Day 18: Operation Order
+
+First excercise was easy to implement by common logic. For the second excercise
+I needed to start finding proper algorithm. Problem was solved with implementation of
+[Shunting-yard algorithm](https://en.wikipedia.org/wiki/Shunting-yard_algorithm).
