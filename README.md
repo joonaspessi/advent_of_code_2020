@@ -217,3 +217,10 @@ theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Computation)
 First excercise was easy to implement by common logic. For the second excercise
 I needed to start finding proper algorithm. Problem was solved with implementation of
 [Shunting-yard algorithm](https://en.wikipedia.org/wiki/Shunting-yard_algorithm).
+
+## Day 19: Monster Messages
+
+This day was really hard to me get right. The correct answer was easily solved with
+[CKY algorithm](https://en.wikipedia.org/wiki/CYK_algorithm). Algorithm solved both
+parts 1 and 2. However, the execution time was really long, not sure if something wrong
+with the implementation

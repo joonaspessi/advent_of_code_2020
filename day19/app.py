@@ -34,6 +34,8 @@ def match_message_list(message, rules):
 
 
 def match_message(message, rule):
+    """ CKY algorithm
+    """
     key = (message, rule)
 
     if key in DP:
