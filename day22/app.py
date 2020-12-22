@@ -1,7 +1,5 @@
 import json
 import sys
-import fileinput
-from collections import defaultdict
 
 
 def get_input(event):
@@ -18,20 +16,7 @@ def get_players(input):
     players = []
     for p in player_inputs:
         players.append([int(card) for card in p.splitlines()[1:]])
-    return players
-
-
-def get_winner_score(players):
-    winner = []
-    for p in players:
-        if len(p) > 0:
-            winner = p
-
-    print("winner", winner)
-    score = 0
-    for i, card in enumerate(reversed(winner)):
-        score += (i+1) * card
-    return score
+    return (players[0], players[1])
 
 
 def get_deck_score(deck):
@@ -48,52 +33,14 @@ def get_winner(p1, p2):
         return (0, p1)
 
 
-def lambda_handler(event, _):
-    input = get_input(event)
-    players = get_players(input)
-    p1, p2 = players
-
-    round = 1
-    while len(p1) > 0 and len(p2) > 0:
-        print(f"-- Round {round} --")
-        print(f"Player 1's deck: {p1}")
-        print(f"Player 2's deck: {p2}")
-        c1 = p1.pop(0)
-        c2 = p2.pop(0)
-        print(f"Player 1 plays: {c1}")
-        print(f"Player 2 plays: {c2}")
-
-        if c1 > c2:
-            print(f"Player 1 wins the round!")
-            p1.extend([c1, c2])
-        else:
-            print(f"Player 2 wins the round!")
-            p2.extend([c2, c1])
-
-        print(p1, p2)
-        round += 1
-
-    print("== Post-game results ==")
-    print(f"Player 1's deck: {p1}")
-    print(f"Player 2's deck: {p2}")
-
-    result = get_winner_score(players)
-    print(result)
-
-    return {
-        "statusCode": 200,
-        "body": json.dumps({
-            "result": result
-        })
-    }
-
-
 def play_game(p1, p2, game=1, round=1, part2=False):
     print("")
     print(f"=== Game {game} ===")
+
     current_game = game
     played_hands_p1 = []
     played_hands_p2 = []
+
     while len(p1) > 0 and len(p2) > 0:
         print("")
         print(f"-- Round {round} (Game {current_game}) --")
@@ -141,6 +88,22 @@ def play_game(p1, p2, game=1, round=1, part2=False):
     return (winner, win_deck, game)
 
 
+def lambda_handler(event, _):
+    input = get_input(event)
+    players = get_players(input)
+    p1, p2 = players
+    _, deck, _ = play_game(p1, p2, 1, 1, part2=False)
+    result = get_deck_score(deck)
+    print(result)
+
+    return {
+        "statusCode": 200,
+        "body": json.dumps({
+            "result": result
+        })
+    }
+
+
 def lambda_handler_2(event, _):
     input = get_input(event)
     players = get_players(input)
@@ -158,5 +121,8 @@ def lambda_handler_2(event, _):
 
 
 if __name__ == "__main__":
-    # lambda_handler({"fileName": sys.argv[1]}, {})
-    lambda_handler_2({"fileName": sys.argv[1]}, {})
+    print(len(sys.argv))
+    if len(sys.argv) == 2:
+        lambda_handler({"fileName": sys.argv[1]}, {})
+    else:
+        lambda_handler_2({"fileName": sys.argv[1]}, {})
