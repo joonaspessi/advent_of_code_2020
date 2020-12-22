@@ -88,7 +88,7 @@ def lambda_handler(event, _):
     }
 
 
-def play_game(p1, p2, game=1, round=1):
+def play_game(p1, p2, game=1, round=1, part2=False):
     print("")
     print(f"=== Game {game} ===")
     current_game = game
@@ -100,37 +100,36 @@ def play_game(p1, p2, game=1, round=1):
         print(f"Player 1's deck: {p1}")
         print(f"Player 2's deck: {p2}")
 
-        # Check if should end the game early to avoid recursion
-        if p1 in played_hands_p1 or p2 in played_hands_p2:
-            return (0, p1, game)
+        if part2:
+            # Check if should end the game early to avoid recursion
+            if p1 in played_hands_p1 or p2 in played_hands_p2:
+                return (0, p1, game)
 
-        played_hands_p1.append(p1[:])
-        played_hands_p2.append(p2[:])
+            # store played hands
+            played_hands_p1.append(p1[:])
+            played_hands_p2.append(p2[:])
 
+        # draw cards
         c1 = p1.pop(0)
         c2 = p2.pop(0)
+
         print(f"Player 1 plays: {c1}")
         print(f"Player 2 plays: {c2}")
 
-        # check if should play sub-game
-        if len(p1) >= c1 and len(p2) >= c2:
+        # check if should play sub-game (part2) or end the round
+        if len(p1) >= c1 and len(p2) >= c2 and part2:
             print("Playing a sub-game to determine the winner...")
             game += 1
-            winner, _, game = play_game(p1[0:c1], p2[0:c2], game, 1)
+            winner, _, game = play_game(p1[0:c1], p2[0:c2], game, 1, part2)
             print("")
             print(f"...anyway, back to game {current_game}")
-            if winner == 0:
-                print(
-                    f"Player 1 wins the round {round} of game {current_game}!")
-                p1.extend([c1, c2])
-            else:
-                print(
-                    f"Player 2 wins the round {round} of game {current_game}!")
-                p2.extend([c2, c1])
-            round += 1
-            continue
+        elif c1 > c2:
+            winner = 0
+        else:
+            winner = 1
 
-        if c1 > c2:
+        # round winner procdedures
+        if winner == 0:
             print(f"Player 1 wins the round {round} of game {current_game}!")
             p1.extend([c1, c2])
         else:
@@ -146,7 +145,7 @@ def lambda_handler_2(event, _):
     input = get_input(event)
     players = get_players(input)
     p1, p2 = players
-    _, deck, _ = play_game(p1, p2, 1, 1)
+    _, deck, _ = play_game(p1, p2, 1, 1, part2=True)
     result = get_deck_score(deck)
     print(result)
 
