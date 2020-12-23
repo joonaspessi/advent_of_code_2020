@@ -1,4 +1,5 @@
 import json
+import sys
 
 
 def get_input(event):
@@ -12,30 +13,31 @@ def get_input(event):
 
 def lambda_handler(event, _):
     input = get_input(event)
-    result = 0
-    print(result)
+    print(input)
+    
 
     return {
         "statusCode": 200,
         "body": json.dumps({
-            "result": result
+            "result": 0
         })
     }
 
 
 def lambda_handler_2(event, _):
     input = get_input(event)
-    result = 0
-    print(result)
+    print(input)
 
     return {
         "statusCode": 200,
         "body": json.dumps({
-            "result": result
+            "result": 0
         })
     }
 
 
 if __name__ == "__main__":
-    lambda_handler({"fileName": sys.argv[1]}, {})
-    # lambda_handler_2({"fileName": sys.argv[1]}, {})
+    if len(sys.argv) == 2:
+        lambda_handler({"fileName": sys.argv[1]}, {})
+    else:
+        lambda_handler_2({"fileName": sys.argv[1]}, {})
