@@ -28,7 +28,6 @@ def destination_cup(cups, selected):
     while True:
         selected -= 1
         if selected < min_cup:
-            print("here")
             selected = max_cup
         if selected in cups:
             break
@@ -99,15 +98,105 @@ def lambda_handler(event, _):
     }
 
 
+class Node(object):
+    def __init__(self, parent, value, prev, next_):
+        self.parent = parent
+        self.value = value
+        self.prev = prev
+        self.next = next_
+
+    def insert(self, value):
+        node = Node(self.parent, value, self, self.next)
+        self.parent.search_table[value] = node
+        self.next = node
+        node.next.prev = node
+        return node
+
+    def erase(self):
+        self.next.prev = self.prev
+        self.prev.next = self.next
+        del self.parent.search_table[self.value]
+
+
+class LinkedList(object):
+    def __init__(self):
+        self.search_table = {}
+
+    def append(self, prev, value):
+        if prev is None:
+            node = Node(self, value, None, None)
+            node.next = node
+            node.prev = node
+            self.search_table[value] = node
+            return node
+        else:
+            node = Node(self, value, prev, prev.next)
+            prev.next = node
+            node.next.prev = node
+            self.search_table[value] = node
+            return node
+
+    def find(self, value):
+        return self.search_table[value]
+
+
 def lambda_handler_2(event, _):
     input = get_input(event)
-    result = 0
-    print(result)
+
+    cups = [int(n) for n in input]
+    llist = LinkedList()
+
+    prev = None
+    for c in cups:
+        prev = llist.append(prev, c)
+
+    next_value = 10
+    while len(llist.search_table) < int(1e6):
+        prev = llist.append(prev, next_value)
+        next_value += 1
+
+        if next_value % 10000 == 0:
+            print(next_value)
+
+    print(len(llist.search_table))
+    assert next_value == int(1e6) + 1
+
+    llist_len = len(llist.search_table)
+
+    current_cup = llist.find(cups[0])
+
+    for move in range(int(1e7)):
+        if move % 1000 == 0:
+            print(move)
+
+        current_value = current_cup.value
+        pick_up = []
+        pick_uo_node = current_cup.next
+        for _ in range(3):
+            pick_up.append(pick_uo_node.value)
+            tmp = pick_uo_node.next
+            pick_uo_node.erase()
+            pick_uo_node = tmp
+
+        destination = current_value - 1 if current_value != 1 else llist_len
+
+        while destination in pick_up:
+            destination = destination - 1 if destination != 1 else llist_len
+
+        destination_node = llist.find(destination)
+        for n in pick_up:
+            destination_node = destination_node.insert(n)
+
+        current_cup = current_cup.next
+
+    print("-- final --")
+    node_1 = llist.find(1)
+    print(node_1.next.value * node_1.next.next.value)
 
     return {
         "statusCode": 200,
         "body": json.dumps({
-            "result": result
+            "result": node_1.next.value * node_1.next.next.value
         })
     }
 
