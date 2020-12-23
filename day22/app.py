@@ -121,7 +121,6 @@ def lambda_handler_2(event, _):
 
 
 if __name__ == "__main__":
-    print(len(sys.argv))
     if len(sys.argv) == 2:
         lambda_handler({"fileName": sys.argv[1]}, {})
     else:
