@@ -13,8 +13,6 @@ def get_input(event):
     return lines
 
 
-# se, sw, nw, ne, e, w
-
 cmd_map = {
     "e":  (1, -1, 0),
     "se": (0, -1, 1),
@@ -81,18 +79,37 @@ def lambda_handler_2(event, _):
                 assert False
         cmds.append(cmd)
 
-    tiles = defaultdict(bool)
+    tiles = set()
 
     for path in cmds:
         tile = (0, 0, 0)
         for x, y, z in path:
             tile = (tile[0]+x, tile[1] + y, tile[2] + z)
-        tiles[tile] = not tiles[tile]
+        if tile in tiles:
+            tiles.remove(tile)
+        else:
+            tiles.add(tile)
 
-    result = len(list(filter(lambda n: n == True, tiles.values())))
-    print(f"{result}")
-    
-    
+    for i in range(100):
+        tiles_to_check = set()
+        new_tiles = set()
+        for (x, y, z) in tiles:
+            tiles_to_check.add((x, y, z))
+            for (dx, dy, dz) in cmd_map.values():
+                tiles_to_check.add((x+dx, y + dy, z + dz))
+        for x, y, z in tiles_to_check:
+            black_count = 0
+            for (dx, dy, dz) in cmd_map.values():
+                if (x+dx, y + dy, z + dz) in tiles:
+                    black_count += 1
+            if black_count == 2 and (x, y, z) not in tiles:
+                new_tiles.add((x, y, z))
+            if black_count in [1, 2] and (x, y, z) in tiles:
+                new_tiles.add((x, y, z))
+        tiles = new_tiles
+
+    print(len(tiles))
+    result = len(tiles)
 
     return {
         "statusCode": 200,
