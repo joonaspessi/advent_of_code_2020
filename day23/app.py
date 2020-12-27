@@ -93,7 +93,7 @@ def lambda_handler(event, _):
     return {
         "statusCode": 200,
         "body": json.dumps({
-            "result": 0
+            "result": get_cup_result(cups)
         })
     }
 

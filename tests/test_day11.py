@@ -17,7 +17,7 @@ def test_day11_1():
     event = get_event_input_raw("day11/input.txt")
     ret = day11.lambda_handler(event, {})
     data = json.loads(ret["body"])
-    assert data.get("result") == 2474
+    assert data.get("result") == 2472
 
 
 def test_day11_2_test():
